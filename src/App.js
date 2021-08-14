@@ -1,11 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import SignupForm from './Component/SignupForm/SignupForm';
+import LoginForm from './Component/LoginForm/LoginForm';
+import Header from './Component/Header/Header';
+import { Switch, BrowserRouter, Route } from 'react-router-dom';
+import Home from './Component/Home/Home';
+import About from './Component/About/About';
+import Footer from './Component/Footer/Footer';
 
 function App() {
+  document.title = 'The Bucket List';
   return (
-    <div className='container max-w-md bg-gray-500 rounded shadow-sm py-6 mx-auto mt-7'>
-      hello
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Switch>
+        <Route path='/About'>
+          <About />
+        </Route>
+        <Route path='/login'>
+          <LoginForm />
+        </Route>
+        <Route path='/signup'>
+          <SignupForm />
+        </Route>
+        <Route path='/'>
+          <Home />
+        </Route>
+      </Switch>
+      <Footer />
+    </BrowserRouter>
   );
 }
 
