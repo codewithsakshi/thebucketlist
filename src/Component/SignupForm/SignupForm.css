@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+.signup-form{
+  font-family: "Poppins";
+}
+
+.Signup-field{
+display: flex;
+flex-direction: column;
+width: 100%;
+position: relative;
+margin-bottom: 60px;
+}
+
+.Signup-field::before{
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #a4243b;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.4s ease;
+}
+
+.Signup-field:hover::before{
+  width: 100%;
+}
+
+.Signup-field label{
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  left: 2px;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.signup-input:focus + .signup-label,
+.signup-input:valid + .signup-label {
+  top: -15px;
+  font-size: 16px;
+}
+
+.signup-btn:active{
+  transform: scale(0.99);
+}
+
+@media screen and (max-width: 500px) {
+  .signup-form{
+    height: 100vh;
+    border-radius: 0;
+    margin: 0;
+  }
+}
