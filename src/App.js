@@ -7,23 +7,23 @@ import Home from './Component/Home/Home';
 import About from './Component/About/About';
 import Footer from './Component/Footer/Footer';
 
-function App() {
+function App({ firebase }) {
   document.title = 'The Bucket List';
   return (
     <BrowserRouter>
-      <Header />
+      <Header firebase={firebase} />
       <Switch>
         <Route path='/About'>
           <About />
         </Route>
         <Route path='/login'>
-          <LoginForm />
+          <LoginForm firebase={firebase} />
         </Route>
         <Route path='/signup'>
-          <SignupForm />
+          <SignupForm firebase={firebase} />
         </Route>
         <Route path='/'>
-          <Home />
+          <Home firebase={firebase} />
         </Route>
       </Switch>
       <Footer />
