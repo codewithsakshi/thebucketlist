@@ -8,8 +8,8 @@ const INSTAGRAM_URL = 'https://www.instagram.com/_sakshi_mittal__/';
 
 export default function Footer() {
   return (
-    <div className='bg-gray-700 text-white text-center p-8'>
-      <h3 className='text-4xl italic pb-8'>Contact</h3>
+    <div className='bg-gray-700 text-white text-center p-8 '>
+      <h3 className='text-4xl italic pb-8'>Contacts</h3>
       <div className='flex justify-evenly items-center text-3xl w-3/4 mx-auto'>
         <div className='line lg:w-64 md:w-40  sm:w-24 bg-white'></div>
         <a href={GITHUB_URL} target='_blank' rel='noreferrer'>
