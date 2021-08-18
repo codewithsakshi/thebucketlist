@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
+import UserContext from '../UserContext/UserContext';
+import FirebaseContext from '../../firebase/FirebaseContext';
 
 export default function Header() {
   const [isVisible, setIsVisible] = useState(false);
+  const { authUser } = React.useContext(UserContext);
+  const firebase = React.useContext(FirebaseContext);
 
+  const isUserLoggedIn = authUser && authUser.uid;
   const handleClick = () => {
     setIsVisible(!isVisible);
   };
@@ -35,22 +40,20 @@ export default function Header() {
           <li>
             <Link className='hover:text-red-700 hover:underline'>Profile</Link>
           </li>
-          <li>
-            <Link
-              to='/login'
-              className='border-2 rounded-md px-4 py-1 border-red-700 hover:bg-red-700 hover:text-white'
-            >
-              Login
-            </Link>
-          </li>
-          <li>
-            <Link
-              to='/signup'
-              className='border-2 rounded-md px-4 py-1 border-red-700 hover:bg-red-700 hover:text-white'
-            >
-              Sign up
-            </Link>
-          </li>
+          {!isUserLoggedIn && (
+            <li>
+              <Link
+                to='/login'
+                className='border-2 rounded-md px-4 py-1 border-red-700 hover:bg-red-700 hover:text-white'
+              >
+                Login
+              </Link>
+            </li>
+          )}
+          {isUserLoggedIn && <p> Welcome {authUser.email}</p>}
+          {isUserLoggedIn && (
+            <button onClick={() => firebase.doSignOut()}>Logout</button>
+          )}
         </ul>
       </nav>
     </header>

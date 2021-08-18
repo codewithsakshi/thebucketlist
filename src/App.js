@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 import SignupForm from './Component/SignupForm/SignupForm';
 import LoginForm from './Component/LoginForm/LoginForm';
@@ -6,24 +7,23 @@ import { Switch, BrowserRouter, Route } from 'react-router-dom';
 import Home from './Component/Home/Home';
 import About from './Component/About/About';
 import Footer from './Component/Footer/Footer';
+import withAuthentication from './hooks/withAuthentication';
 
-function App({ firebase }) {
+function App() {
   document.title = 'The Bucket List';
+
   return (
     <BrowserRouter>
-      <Header firebase={firebase} />
+      <Header />
       <Switch>
         <Route path='/About'>
           <About />
         </Route>
         <Route path='/login'>
-          <LoginForm firebase={firebase} />
-        </Route>
-        <Route path='/signup'>
-          <SignupForm firebase={firebase} />
+          <LoginForm />
         </Route>
         <Route path='/'>
-          <Home firebase={firebase} />
+          <Home />
         </Route>
       </Switch>
       <Footer />
@@ -31,4 +31,4 @@ function App({ firebase }) {
   );
 }
 
-export default App;
+export default withAuthentication(App);

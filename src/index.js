@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import MainApp from './MainApp';
 import reportWebVitals from './reportWebVitals';
+import Firebase from './firebase/Firebase';
+import FirebaseContext from './firebase/FirebaseContext';
+
+const firebase = new Firebase();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <FirebaseContext.Provider value={firebase}>
+      <MainApp />
+    </FirebaseContext.Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

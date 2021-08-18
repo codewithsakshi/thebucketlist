@@ -1,15 +1,12 @@
- body{
-  /* background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%); */
- }
-
+ 
  .login-field{
   display: flex;
   flex-direction: column;
   width: 100%;
   position: relative;
   } 
-    
-   .login-field label{
+
+  .login-field label{
     position: absolute;
     top: 45%;  
     transform: translateY(-50%);
@@ -17,20 +14,15 @@
     transition: all 0.3s ease;
   }
   
-
-  .login-input:focus + .login-label{
-    top: -15px;
+  .login-input:focus + .login-label,
+  .login-input:valid + .login-label{
     font-size: 16px;
   }
   
-   /* .login-input:valid + .login-label {
-    top: -15px;
-    font-size: 16px;
-  } */
-
   .login-btn:active{
   transform: scale(0.99);
   }
+
   @media screen and (max-width: 500px) {
     .login-form{
       height: 100vh;
@@ -38,3 +30,6 @@
       margin: 0;
     }
   }   
+
+
+  

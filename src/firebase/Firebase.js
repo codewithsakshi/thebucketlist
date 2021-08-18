@@ -29,20 +29,28 @@ class Firebase {
 
   onAuthChangeListener = (next, fallback = () => {}) => {
     return this.auth.onAuthStateChanged((authUser) => {
+      console.log('auth user:: ', authUser);
       if (authUser) {
-        this.user(authUser.uid)
-          .once('value')
-          .then((snapshot) => {
-            const dbUser = snapshot.val();
-            const user = {
-              uid: authUser.uid,
-              email: authUser.email,
-              emailVerified: authUser.emailVerified,
-              ...dbUser,
-            };
-            // console.log(`authUser:: listener:: ${user}`);
-            next(user);
-          });
+        const user = {
+          uid: authUser.uid,
+          email: authUser.email,
+          emailVerified: authUser.emailVerified,
+        };
+        next(user);
+
+        // this.user(authUser.uid)
+        //   .once('value')
+        //   .then((snapshot) => {
+        //     const dbUser = snapshot.val();
+        //     const user = {
+        //       uid: authUser.uid,
+        //       email: authUser.email,
+        //       emailVerified: authUser.emailVerified,
+        //       ...dbUser,
+        //     };
+        //     // console.log(`authUser:: listener:: ${user}`);
+        //     next(user);
+        //   });
       } else {
         // console.log(`Now user is not available`);
         fallback();
